@@ -1,0 +1,22 @@
+{% extends 'post/index.html' %}
+{% load staticfiles %}
+
+{% block top_parallax_container_extra_classes %}height-150{% endblock %}
+
+{% block body_content %}
+    <div class="row">
+    <div class="col s12 center">
+        <h2 class="header">{{ post.title }}</h2>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12">
+            <img src="{% static 'post/img/coffee.jpg' %}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            {{ post.content | safe }}
+        </div>
+    </div>
+{% endblock %}

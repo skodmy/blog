@@ -1,0 +1,48 @@
+{% extends 'post/index.html' %}
+{% load staticfiles %}
+
+{% block extra_links %}
+    <link rel="stylesheet" href="{% static 'post/css/articles.css' %}">
+{% endblock %}
+
+{% block top_parallax_container_extra_classes %}height-150{% endblock %}
+
+{% block body_content %}
+    {% for post in posts %}
+        <div class="row">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="{% static 'post/img/coffee.jpg' %}" class="materialboxed">
+                      <span class="card-title">{{ post.title }}</span>
+                    </div>
+                    <div class="card-content">
+                      <p>{{ post.description }}</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="/article/{{ post.id }}/" class="blue-text">Read more</a>
+                        <span class="right">test</span>
+                    </div>
+                  </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block right_col_content %}
+    <div class="row">
+              <form>
+                <div class="input-field">
+                  <input id="search" type="search" placeholder="search article..." required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+    </div>
+    <div class="row">
+        <ul class="collection with-header">
+            <li class="collection-header"><h3>Categories</h3></li>
+            {% for category in categories %}
+                <li class="collection-item"><a href="#!">{{ category.name | capfirst }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
